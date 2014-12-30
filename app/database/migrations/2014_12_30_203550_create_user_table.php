@@ -10,9 +10,14 @@ class CreateUserTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		//
+	public function up() {
+		Schema::create('users', function($table)
+		{
+			$table->increments('id');
+			$table->string('email')->unique();
+			$table->string('name');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -20,9 +25,8 @@ class CreateUserTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		//
+	public function down() {
+		Schema::drop('users');
 	}
 
 }
